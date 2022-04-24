@@ -1,0 +1,136 @@
+{% extends 'store/layouts/main.html' %}
+{% block title %}Blog{% endblock title %}
+{% block body %}
+
+<div class="container">
+    {% for item in data %}
+    <div class="post-page">
+        
+       <div class="post-img">
+        <img src="" alt="" width="250px">
+       </div>
+       <div class="post-content">
+        <h1 class="heading-post"></h1>
+        <p class="short-pra">
+          
+        </p>
+        <hr>
+
+        <h2 ><strong>Author:</strong> <p style="display: inline;">Arslan_Chaudhry</p><strong style="margin-left: 4px;">Publish Date <p style="display: inline; "></p></strong></h2>
+        
+       </div>
+       
+    </div>
+    {% endfor %}
+   </div>
+<style>
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+html{
+    font-size: 62.5%;
+}
+.container{
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 4rem;
+}
+.post-page{
+    width: 100%;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+.post-img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.post-img img{
+    object-fit: fill;
+}
+.post-content{
+    margin-left: 3rem;
+    display: flex;
+    flex-direction: column;
+   width: 60%;
+}
+.heading-post{
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+.short-pra{
+    font-size: 1.5rem;
+}
+hr{
+    font-weight: 100;
+    margin-bottom: 0.2rem;
+    margin-top: 0.2rem;
+}
+strong{
+    font-weight: 400;
+}
+.read-art{
+    width: 100%;
+  
+}
+.read-art button{
+    float: inline-end;
+    padding: 0.4rem 0.5rem;
+    cursor: pointer;
+    background-color: rgb(98, 206, 152);
+    border: 0;
+    border-radius: 2px;
+}
+.read-art .shair{
+    background-color: rgb(98, 206, 152);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 3px;
+    cursor: pointer;
+}
+.social-shair{
+    display: flex;
+  
+}
+
+@media screen and (max-width: 870px){
+    html{
+        font-size: 50%;
+    }
+    .container{
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 4rem;
+    }
+    .post-page{
+        flex-direction: column;   
+    }
+    .post-img img{
+        width: 100%;
+    }
+    .post-content{
+        
+        box-sizing: border-box;
+       width: 100%;
+       margin: 0;
+       padding: 0;
+       padding: 10px;
+     
+    }
+    .post-img{
+        padding: 10px;
+    }
+    .post-page{
+        border: 0;
+    }
+    }
+</style>
+   
+{% endblock body %}

@@ -5,19 +5,20 @@
     <div class="row">
         <div class="col-md-12">
             <h4>{{category_name}}</h4>
+            <hr>
             <div class="row">
              {% for item in products %}
              <div class="col-md-2">
                <div class="card">
-                <a href="#">
+                <a href="{% url 'productview' item.category.slug item.name %}">
                   <div class="card-body ">
                     <div class="card-image">
-                        <img src="{{item.imge.url}}" alt="" width="100%" height="100%">
+                        <img src="{{item.product_imge.url}}" alt="" width="100%" height="100%">
                         <h4 class="text-center mt-1" style="font-size: medium; font-weight: 600;">{{item.name}}</h4>
                     </div>
-                   <span>{{item.original_price}}</span>
-                   <span>{{item.selling_price}}</span>
-                   
+                      <span class="float-start">{{item.original_price}}$</span>
+                      <span class="float-end">{{item.selling_price}}$</span>
+                    
                   </div>
                 </a>
                </div>

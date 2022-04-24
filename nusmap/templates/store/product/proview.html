@@ -1,0 +1,65 @@
+{% extends 'store/layouts/main.html' %}
+{% block title %}Product View{% endblock title %}
+{% block body %}
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-12 card">
+            <h4 class="my-2 mx-3">{{products.name}}</h4>
+            <hr>  
+            
+            <div class="d-flex">
+                    <div class="col-md-2">
+                       <div class="">
+
+                       
+                          <div class="card-body ">
+                            <div class="card-image">
+                                <img src="{{products.product_imge.url}}" alt="" width="100%" height="100%">
+                              
+                            </div>
+                          </div>
+                        </div>
+                     </div>
+                     <div class="col-md-10 float-right  p-3">
+                         
+                        <div class="  d-flex d-flex justify-content-between align-items-center"> 
+                        <h4>{{products.name}}</h4>
+                         <i class="bi bi-heart btn text-danger" style="font-size: 25px;" id="fave"></i>
+                        </div>
+                        <div class="d-flex"> 
+                        <p class="text-decoration-line-through text-danger" >{{products.original_price}}$</p>
+                        <p class="mx-3">{{products.selling_price}}$</p>
+                        <div>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            <i class="bi bi-star-fill "></i>
+                        </div>
+                        </div>
+                        <span class=""> 
+                            <p>{{products.small_description}}</p>
+                        </span>
+                        <div class="input-group "> 
+                        <button class="btn-sm btn-secondary " id="dec">-</button>
+                        <input type=""   style="width: 90px; outline: none; border: 1px solid black;" class="btn-sm qnt text-center" id="qnt" value="1" >
+                        <button class="btn-sm inc btn-secondary" id="inc">+</button>
+                        </div>
+                        <div class=""> 
+                            
+                         <button class="btn-sm my-3 btn-secondary text-center shadow " id="add-to-card">Add to card <i class="bi bi-cart-fill"></i></button>
+                        </div>
+                        
+                    </div>
+               
+                </div>
+                <div class="col-md-12 "> 
+                    <p>{{products.description}}</p>
+                 </div>
+            
+        </div>
+    </div>
+</div>
+
+    
+{% endblock body %}
