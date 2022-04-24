@@ -2,41 +2,97 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
 {% block body %}
-<body class="my-5">
-      <div class="d-flex flex-column w-25 mx-auto ">
-          <div class=" d-flex  justify-content-center align-items-center">
-<img src="static\icon\signup .png" alt="" width="70px">
+<body class="my-3 bg-light">
+  
+      <div class="d-flex flex-column  w-50 mx-auto bg-white  p-5 cont">
+        <h3 class="text-center mb-3 ">Create an Account</h3>
+        <p class="text-center mb-3">Sign Up with your social media account or email address</p>
+          <div class="d-flex justify-content-around">
+           <div class="bg-primary border-0 text-light py-1 px-2 ] d-flex align-items-center"><i class="bi bi-facebook btn-lg "></i> Facebook</div>
+           <div class="bg-danger border-0 text-light py-1 px-2  d-flex align-items-center"><i class="bi bi-google btn-lg "></i>Google</div>
+           <div class="bg-info border-0 text-light py-1 px-2  d-flex align-items-center"><i class="bi bi-twitter btn-lg "></i>Twitter</div>
           </div>
-          <h3 class="btn-lg">Already a member? <a href="login" class="btn-lg">Log in</a></h3>
-        <div class="btn btn-primary btn-lg text-light mb-3" style="background-color: #3B5998;"> <i class="bi bi-facebook"></i>   SignUp With Facebook</div>
-        <div class="btn btn-primary btn-lg border-0 text-light" style="background-color: #dd4b39;"> <i class="bi bi-google  "></i>   SignUp With Google</div>
-        <div class="btn btn-primary btn-lg border-0 text-light my-3" style="background-color: #55ACEE;"> <i class="bi bi-twitter"></i>   SignUp With Twitter</div>
-
-        <div class="mb-3 ">
-          {% if messages %}
-          {% for message in messages %}
-          <p class='{{ message.tags }} d-inline text-danger' >{{ message }}</p>
-          {% endfor %}
-          {% endif %}
-            <form action="/" method="post" >
-                {% csrf_token %}
-                <label for="username" class="form-label">username <p class="text-danger d-inline">*</p></label>
-                <input type="text" class="form-control" id="username" placeholder="Enter Your UserName" name="username" required>
-            <label for="email" class="form-label">Email <p class="text-danger d-inline">*</p>
-            </label>
-            <input type="email" class="form-control" id="email" placeholder="Enter Your Email" name="email" required>
-            <label for="password" class="form-label">password <p class="text-danger d-inline">*</p>
-            </label>
-            <input type="text" class="form-control" id="password" placeholder="Enter Your Password" name="password" required>
-            <label for="cpass" class="form-label">Conform Password <p class="text-danger d-inline">*</p>
-            </label>
-            <input type="text" class="form-control" id="cpass" placeholder="Enter Again Your Password" name="cpass" required>
-          </div>
-         
-          <button class="btn btn-primary" type="submit">SignUp Now!</button>
-         </form>
-
+        <div class="bg-danger vl mt-5">
+        <span class="inner">or</span>
+        
         </div>
+        <div class=" mt-5 ">
+  
+ 
+          <div class=" border border-secondary text-danger py-1 px-2  d-flex align-items-center">
+            <i class="bi bi-person-bounding-box btn-lg text-danger"></i>
+             <input type="text" class="border-0 w-100 outlin " placeholder="Username">
+          </div>
+          <!-- 000 -->
+          <div class=" border border-secondary text-danger py-1 px-2  d-flex align-items-center mt-3">
+            <i class="bi bi-envelope-fill btn-lg text-danger"></i> 
+            <input type="text" class="border-0 w-100 outlin " placeholder="Email Address">
+          </div>
+          <!-- 000 -->
+          <div class=" border border-secondary text-danger py-1 px-2  d-flex align-items-center mt-3">
+            <i class="bi bi-lock-fill btn-lg text-danger">
+
+            </i> <input type="text" class="border-0 w-100 outlin " placeholder="Password">
+          </div>
+          <!-- 000 -->
+          <div class=" border border-secondary  text-danger py-1 px-2  d-flex align-items-center mt-3">
+            <i class="bi bi-lock-fill btn-lg text-danger">
+
+            </i> <input type="text" class="border-0 w-100 outlin " placeholder="Re-Enter Password">
+          </div>
+          
+        </div>
+        <div class=" ">
+
+          <!-- 000 -->
+          <div class="  py-1 px-2  d-flex align-items-center mt-3 justify-content-between">
+            <button class="btn btn-sm btn-secondary" href="{% url 'signup' %}">Sign In</button>
+            <Button class="btn btn-sm btn-secondary">Sign Up Now!</Button>
+          </div>
+          
+        </div>
+     </div>
+      </div>
+
+ <style>
+span{
+  width: 30px;
+  height: 30px;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  position: absolute;
+  
+}
+.vl { 
+ 
+  border: 2px solid #ddd;
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+}
+.inner {
+  position: absolute;
+  
+  transform: translateX(50% );
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  padding: 8px 10px;
+  
+}
+.outlin{
+  outline: none;
+}
+@media (min-width: 768px) { 
+  .cont{
+    width: 100%;
+    padding: 0;
+  }
+}
+ </style>    
 
 
 

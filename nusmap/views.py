@@ -54,41 +54,12 @@ def signup(request):
       email=request.POST['email']
       password=request.POST['password']
       cpass=request.POST['cpass']
-      #username length
-    
-
-      if len(username)>13:
-        messages.error(request, 'Maximum username 0-13*')
-        return redirect('/signup')
-        #username validation
-      if not username.isalnum():
-        messages.error(request, 'Username only contain numbers and letters*')
-        return redirect('/signup')
-        #password strength
-      if re.search(r'^[A-Za-z0-9_-]+$', password):
-        messages.error(request, 'Password must contain upcase lower case and symbles*')
-        return redirect('/signup') 
-        #password validation
-      if password != cpass:
-          messages.error(request, 'Password is not same*')
-          return redirect('/signup')
-      
+      #username length   
       user = User.objects.create_user(username, email, password)
       user.save()
-      return render(request, 'store/index.html')
-      return redirect('#')
-     
-         
-
-        
-      # return render(request, 'user.html')
-      # return redirect('/user')
-    # return render(request, 'signup.html')
-        
+      return render(request, 'store/auth/login.html')
       
-        
-      # return render(request, 'user.html')
-      # return redirect('/user')
-      # return render(request, 'store/auth/signup.html')
-
     return render(request, 'store/auth/signup.html')
+
+def user_login(request):
+    return render(request, 'store/auth/login.html')
