@@ -8,37 +8,42 @@
         <h3 class="text-center mb-3 ">Create an Account</h3>
         <p class="text-center mb-3">Sign Up with your social media account or email address</p>
           <div class="d-flex justify-content-around">
-           <div class="bg-primary border-0 text-light py-1 px-2 ] d-flex align-items-center"><i class="bi bi-facebook btn-lg "></i> Facebook</div>
-           <div class="bg-danger border-0 text-light py-1 px-2  d-flex align-items-center"><i class="bi bi-google btn-lg "></i>Google</div>
-           <div class="bg-info border-0 text-light py-1 px-2  d-flex align-items-center"><i class="bi bi-twitter btn-lg "></i>Twitter</div>
+           <div class="bg-secondary border-0  text-light  d-flex align-items-center rd"><i class="bi bi-facebook btn-lg "></i> </div>
+           <div class="bg-secondary border-0 text-light rd  d-flex align-items-center"><i class="bi bi-google btn-lg "></i></div>
+           <div class="bg-secondary border-0 text-light  rd d-flex align-items-center"><i class="bi bi-twitter btn-lg "></i></div>
           </div>
         <div class="bg-danger vl mt-5">
-        <span class="inner">or</span>
+        <span class="inner ">or</span>
         
         </div>
+      {% if messages %}
+      {% for message in messages %}
+      <p class='{{ message.tags }} d-inline text-danger' >{{ message }}</p>
+      {% endfor %}
+      {% endif %}
         <div class=" mt-5 ">
-  
- 
+        <form action="/signup" method="post" >
+          {% csrf_token %}
           <div class=" border border-secondary text-danger py-1 px-2  d-flex align-items-center">
-            <i class="bi bi-person-bounding-box btn-lg text-danger"></i>
-             <input type="text" class="border-0 w-100 outlin " placeholder="Username">
+            <i class="bi bi-person-bounding-box btn-lg text-dark"></i>
+             <input type="text" class="border-0 w-100 outlin " placeholder="Username" name="username">
           </div>
           <!-- 000 -->
           <div class=" border border-secondary text-danger py-1 px-2  d-flex align-items-center mt-3">
-            <i class="bi bi-envelope-fill btn-lg text-danger"></i> 
-            <input type="text" class="border-0 w-100 outlin " placeholder="Email Address">
+            <i class="bi bi-envelope-fill btn-lg text-dark"></i> 
+            <input type="text" class="border-0 w-100 outlin " placeholder="Email Address" name="email">
           </div>
           <!-- 000 -->
           <div class=" border border-secondary text-danger py-1 px-2  d-flex align-items-center mt-3">
-            <i class="bi bi-lock-fill btn-lg text-danger">
+            <i class="bi bi-eye btn-lg text-dark " onclick="visible()" >
 
-            </i> <input type="text" class="border-0 w-100 outlin " placeholder="Password">
+            </i> <input type="password" class="border-0 w-100 outlin visible" placeholder="Password" name="password" >
           </div>
           <!-- 000 -->
-          <div class=" border border-secondary  text-danger py-1 px-2  d-flex align-items-center mt-3">
-            <i class="bi bi-lock-fill btn-lg text-danger">
+          <div class=" border border-dark  text-danger py-1 px-2  d-flex align-items-center mt-3">
+            <i class="bi bi-eye btn-lg text-dark" >
 
-            </i> <input type="text" class="border-0 w-100 outlin " placeholder="Re-Enter Password">
+            </i> <input type="password" class="border-0 w-100 outlin visible" placeholder="Re-Enter Password" name="cpass" >
           </div>
           
         </div>
@@ -46,13 +51,15 @@
 
           <!-- 000 -->
           <div class="  py-1 px-2  d-flex align-items-center mt-3 justify-content-between">
-            <button class="btn btn-sm btn-secondary" href="{% url 'signup' %}">Sign In</button>
-            <Button class="btn btn-sm btn-secondary">Sign Up Now!</Button>
+            <div class="ald"><p>Already an account</p><a href="user_login">Sign In</a></div>
+           
+            <Button class="btn btn-sm btn-secondary" type="submit">Sign Up Now!</Button>
           </div>
-          
+        </form>
         </div>
+      
      </div>
-      </div>
+</div>
 
  <style>
 span{
@@ -86,6 +93,21 @@ span{
 .outlin{
   outline: none;
 }
+.ald{
+  display: flex;
+  line-height: 1px;
+}
+.ald p{
+  margin-right: 4px;
+}
+.rd{
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 @media (min-width: 768px) { 
   .cont{
     width: 100%;
@@ -94,7 +116,12 @@ span{
 }
  </style>    
 
+<script>
 
+ function visible(){
+
+ }
+</script>
 
    
 {% endblock body %}

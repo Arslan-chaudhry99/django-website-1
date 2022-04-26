@@ -13,21 +13,37 @@
         <div class=" d-flex  justify-content-center align-items-center">
           <h1><img src="static\icon\icons8-login-30 .png" alt="" width="100px"></h1> 
         </div>
-          <form action="/login" method="post">
+          <form action="/user_login" method="post">
               {% csrf_token %}
-              <label for="email" class="form-label">Email <p class="text-danger d-inline">*</p></label>
-              <input type="text" class="form-control" id="email" placeholder="Enter Your Email Address" name="email" required>
+              <label for="email" class="form-label">Username <p class="text-danger d-inline">*</p></label>
+              <div class=" border border-secondary text-danger py-1 px-2  d-flex align-items-center">
+                <i class="bi bi-person-bounding-box btn-lg text-dark"></i>
+                 <input type="text" class="border-0 w-100 outlin username" placeholder="Username" name="username">
+              </div>
           <label for="loginpass" class="form-label">Password <p class="text-danger d-inline">*</p></label>
-          <input type="text" class="form-control" id="loginpass" placeholder="Enter Your Password" name="loginpass" >
+          <div class=" border border-secondary text-danger py-1 px-2  d-flex align-items-center">
+            <i class="bi bi-eye btn-lg text-dark"></i>
+             <input type="text" class="border-0 w-100 outlin lock" placeholder="password" name="password">
+          </div>
         </div>
         
-        <button class="btn btn-primary" type="submit">Login Now!</button>
-        <h3 class="btn-sm">Recover Password<a href="forgetpassword" class="btn-lg">forget password</a></h3>   
+        <button class="btn btn-dark" type="submit">Login Now!</button>
+        <p class="btn-sm"><a href="forgetpassword" class="btn-lg rec">I have forget my password</a></p>   
        </form>
     </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
-  
+  <style>
+.username{
+  outline: none;
+}
+.lock{
+  outline: none;
+}
+.rec{
+  font-size: 15px;
+}
+  </style>
 {% endblock body %}
 
 

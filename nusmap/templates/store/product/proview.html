@@ -11,7 +11,7 @@
                     <div class="col-md-2">
                        <div class="">
 
-                       
+                      
                           <div class="card-body ">
                             <div class="card-image">
                                 <img src="{{products.product_imge.url}}" alt="" width="100%" height="100%" style="object-fit: cover;">
@@ -26,7 +26,7 @@
                         <h4>{{products.name}}</h4>
                          <i class="bi bi-heart btn text-danger" style="font-size: 25px;" id="fave"></i>
                         </div>
-                        <div class="d-flex"> 
+                        <div class="d-flex" style="font-weight: bold;"> 
                         <p class="text-decoration-line-through text-danger" >{{products.original_price}}$</p>
                         <p class="mx-3">{{products.selling_price}}$</p>
                         <div>
@@ -41,22 +41,22 @@
                             <p>{{products.small_description}}</p>
                         </span>
                         <div class="input-group "> 
-                        <button class="btn-sm btn-secondary " id="dec">-</button>
+                        <button class="btn-sm btn-dark shadow-none" id="dec">-</button>
                         <input type=""   style="width: 90px; outline: none; border: 1px solid black;" class="btn-sm qnt text-center" id="qnt" value="1" >
-                        <button class="btn-sm inc btn-secondary" id="inc">+</button>
+                        <button class="btn-sm inc btn-dark shadow-none" id="inc">+</button>
                         </div>
                         <div class=""> 
                             
-                         <button class="btn-sm my-3 btn-secondary text-center shadow " id="add-to-card">Add to card <i class="bi bi-cart-fill"></i></button>
+                         <button class="btn-sm my-3 btn-warning border-0 text-center shadow text-light" id="add-to-card">Add to card <i class="bi bi-cart-fill text-light"></i></button>
                         </div>
                         
                     </div>
                
                 </div>
-                <div class="col-md-12 "> 
-                    <p>{{products.description}}</p>
+                <div class="col-md-10  "> 
+                    <p style="margin-left: 20%;">{{products.description}}</p>
                  </div>
-            
+               
         </div>
     </div>
 </div>

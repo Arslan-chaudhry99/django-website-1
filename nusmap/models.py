@@ -40,7 +40,10 @@ class Product(models.Model):
     meta_title=models.CharField( max_length=150, null=False, blank=False)
     meta_keywords=models.CharField( max_length=150, null=False, blank=False)
     meta_description=models.CharField( max_length=550, null=False, blank=False)
+    total_sales=models.IntegerField(default=1)
     created_at=models.DateField( auto_now_add=True)   
     def __str__(self):
         return self.name
 
+
+    

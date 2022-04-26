@@ -50,16 +50,55 @@ def productview(request, cate_slug, prod_slug):
 
 def signup(request):
     if request.method=='POST':
-      username=request.POST['username']
-      email=request.POST['email']
-      password=request.POST['password']
-      cpass=request.POST['cpass']
+      username=request.POST.get('username')
+      email=request.POST.get('email')
+      password=request.POST.get('password')
+      cpass=request.POST.get('cpass')
       #username length   
-      user = User.objects.create_user(username, email, password)
-      user.save()
-      return render(request, 'store/auth/login.html')
+      if(password != cpass):
+        messages.error(request, "Seems Like password is not same")
+        redirect("/signup")
+        # user name length
+      if len(username)>13:
+        messages.error(request, 'Maximum username 0-13*')
+        return redirect('/signup')
+        #username validation
+          
+      if not username.isalnum():
+        messages.error(request, 'Username only contain numbers and letters*')
+        return redirect('/signup')
+      if re.search(r'^[A-Za-z0-9_-]+$', password):
+        messages.error(request, 'Password must contain upcase lower case and symbles*')
+        return redirect('/signup')
+      else:
+       try:
+        user = User.objects.create_user(username, email, password)
+        user.save()
+        return render(request, 'store/auth/login.html')
+       except Exception as e:
+        messages.error(request, 'Try another username')
+        return redirect('/signup')
+
+      
+
+      
       
     return render(request, 'store/auth/signup.html')
 
 def user_login(request):
-    return render(request, 'store/auth/login.html')
+    if request.method=='POST':
+     username=request.POST.get('username')
+     password=request.POST.get('password')
+     user=authenticate(username=username,password=password)
+     if user is not None:
+        login(request, user)
+        return render(request, "store/t.html")
+        return redirect("/user_login")
+     else:
+       messages.error(request, "Seems Like password or username incorrect")
+    return render(request, "store/auth/login.html")
+     
+
+def us_logout(request, user_username):
+    return HttpResponse(f"Dear {user_username} you are succesfuly logout")
+    
