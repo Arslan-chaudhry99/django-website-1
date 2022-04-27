@@ -49,6 +49,10 @@ def productview(request, cate_slug, prod_slug):
 
 
 def signup(request):
+  if request.user.is_authenticated:
+    messages.error(request, "You already have an account")
+    return redirect("/collections")
+  else:
     if request.method=='POST':
       username=request.POST.get('username')
       email=request.POST.get('email')
@@ -70,12 +74,12 @@ def signup(request):
       if re.search(r'^[A-Za-z0-9_-]+$', password):
         messages.error(request, 'Password must contain upcase lower case and symbles*')
         return redirect('/signup')
-      else:
-       try:
+    
+      try:
         user = User.objects.create_user(username, email, password)
         user.save()
-        return render(request, 'store/auth/login.html')
-       except Exception as e:
+        return redirect('/userlogin')
+      except Exception as e:
         messages.error(request, f'{username} username is not valid.Try another username')
         return redirect('/signup')
 
@@ -85,25 +89,24 @@ def signup(request):
       
     return render(request, 'store/auth/signup.html')
 
-def user_login(request):
+def userlogin(request):
   if request.user.is_authenticated:
-    messages.error(request, "Seems Like password or username incorrect")
-    return redirect("/user_login")
+    messages.error(request, "You are already logedin")
+    return redirect("/collections")
   else:
     if request.method=='POST':
      username=request.POST.get('username')
      password=request.POST.get('password')
      user=authenticate(username=username,password=password)
      if user is not None:
-        login(request, user)
-        contex={
-          "user":user
-        }
-        return render(request, "store/index.html",contex)
+      login(request, user)
+      return redirect('/collections')
+      
+      
         
      else:
        messages.error(request, "Seems Like password or username incorrect")
-       return redirect("/user_login")
+       return redirect("/userlogin")
     return render(request, "store/auth/login.html")
 
 
@@ -115,4 +118,7 @@ def us_logout(request):
     
 
 def profile_view(request):
-  return render(request, "store/auth/profile.html")
+  if request.user.is_authenticated:
+   return render(request, "store/auth/profile.html")
+  else:
+    return HttpResponse("Error 404 page not found")
