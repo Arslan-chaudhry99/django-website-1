@@ -20,6 +20,7 @@ def home(request):
 def collections(request):
     category=Category.objects.filter(status=0)
     context={"category":category}
+    print(request.session.get('username'))
     return render(request, 'store/collections.html', context )
 
 def collectionsview(request, slug):
@@ -100,7 +101,10 @@ def userlogin(request):
      user=authenticate(username=username,password=password)
      if user is not None:
       login(request, user)
-      return redirect('/collections')
+      request.session['username']=user.username
+      
+      
+      return redirect('/collections' )
       
       
         
