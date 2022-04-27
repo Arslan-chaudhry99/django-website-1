@@ -60,7 +60,7 @@ def signup(request):
         redirect("/signup")
         # user name length
       if len(username)>13:
-        messages.error(request, 'Maximum username 0-13*')
+        messages.error(request, f'{username} is not valid username Maximum   0-13 charcter allowed*')
         return redirect('/signup')
         #username validation
           
@@ -76,7 +76,7 @@ def signup(request):
         user.save()
         return render(request, 'store/auth/login.html')
        except Exception as e:
-        messages.error(request, 'Try another username')
+        messages.error(request, f'{username} username is not valid.Try another username')
         return redirect('/signup')
 
       
@@ -86,19 +86,33 @@ def signup(request):
     return render(request, 'store/auth/signup.html')
 
 def user_login(request):
+  if request.user.is_authenticated:
+    messages.error(request, "Seems Like password or username incorrect")
+    return redirect("/user_login")
+  else:
     if request.method=='POST':
      username=request.POST.get('username')
      password=request.POST.get('password')
      user=authenticate(username=username,password=password)
      if user is not None:
         login(request, user)
-        return render(request, "store/t.html")
-        return redirect("/user_login")
+        contex={
+          "user":user
+        }
+        return render(request, "store/index.html",contex)
+        
      else:
        messages.error(request, "Seems Like password or username incorrect")
+       return redirect("/user_login")
     return render(request, "store/auth/login.html")
-     
 
-def us_logout(request, user_username):
-    return HttpResponse(f"Dear {user_username} you are succesfuly logout")
+
+def us_logout(request):
+  if request.user.is_authenticated:  
+   logout(request)
+   messages.error(request, "Logout successfuly")
+   return redirect('/')
     
+
+def profile_view(request):
+  return render(request, "store/auth/profile.html")

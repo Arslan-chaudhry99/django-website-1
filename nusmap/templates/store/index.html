@@ -2,5 +2,12 @@
 {% block title %}Home{% endblock title %}
 {% block body %}
     {% include 'store/nav/slider.html' %}
-    
+    {% if messages %}
+    {% for message in messages %}
+    <div class=" aler alert alert-danger alert-dismissible fade show " role="alert">
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      <p class="{{ message.tags }}"><strong><i class="bi bi-exclamation-octagon-fill"></i></strong>{{ message }}</p>
+    </div>
+    {% endfor %}
+    {% endif %}
 {% endblock body %}

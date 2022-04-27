@@ -5,7 +5,10 @@
     <div class="d-flex flex-column w-25 mx-auto ">
       {% if messages %}
       {% for message in messages %}
-      <p class='{{ message.tags }} d-inline text-danger' >{{ message }}</p>
+      <div class="alert alert-danger alert-dismissible fade show " role="alert">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <p class="{{ message.tags }}"><strong><i class="bi bi-exclamation-octagon-fill"></i></strong>{{ message }}</p>
+      </div>
       {% endfor %}
       {% endif %}
       

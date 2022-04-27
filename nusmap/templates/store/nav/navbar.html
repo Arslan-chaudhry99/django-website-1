@@ -15,9 +15,28 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{% url 'blog' %}">Blog</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'signup' %}">Sign Up</a>
+          {% if request.user.is_authenticated %}
+          <li class="nav-item dropdown ">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              {% comment %} {{user.username}} {% endcomment %}
+              <i class="bi bi-person-circle" ></i>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li ><a class="dropdown-item" href="profile_view">Profile</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li ><a class="dropdown-item text-danger " href="us_logout" style="font-weight: bold;">Logout <i class="bi bi-box-arrow-right text-danger"></i></a></li>
+            </ul>
           </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="signup">Sign Up</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="user_login">Sign in</a>
+          </li>
+          {% endif %}
+         
+
           
         
          
