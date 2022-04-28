@@ -1,0 +1,83 @@
+
+{% extends 'store/layouts/main.html' %}
+{% block title %}Home{% endblock title %}
+{% block body %}
+<div class="container mt-3 ">
+    <div class="row">
+        <div class="col-md-12">
+          <div class="">
+            <div class="dropdown mb-2">
+              <button class="btn btn-dark shadow-none " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                Filter  <i class="bi bi-funnel"></i>
+              </button>
+              <ul class="dropdown-menu  p-3" aria-labelledby="dropdownMenuButton1">
+                <li class="d-flex"><input type="radio" name="ac" id=""><a class="dropdown-item " href="#">HP Laptops</a></li>
+                <li class="d-flex"><input type="radio" name="ac" id=""><a class="dropdown-item " href="#">Lenovo Laptops</a></li>
+                <li class="d-flex"><input type="radio" name="ac" id=""><a class="dropdown-item " href="#">Dell Laptops</a></li>
+                <hr>
+                <div class="d-flex justify-content-between align-items-center">
+                  <button class="btn btn-dark btn-sm">Clear</button>
+                  <button class="btn btn-dark btn-sm">Apply</button>
+                </div>
+              </ul>
+             
+            </div>
+          </div>  
+          <div class="row">
+            {% for item in products %}
+            <div class="  mx-4 my-4 " style="width: 18rem;">
+              <div class="d-flex justify-content-center p-3">
+                <a href="{% url 'productview' item.category.slug item.name %}">
+
+                <img src="{{item.product_imge.url}}"  alt="imge" width="150px">
+                
+              </a>
+              </div>
+              
+              <div class="bg-light">
+                <h5 class="card-title d-flex justify-content-between align-items-center">{{item.name}}</h5>
+                
+                <div class="d-flex justify-content-between">
+                  <div>
+                    <i class="bi bi-star-fill text-warning"></i>
+                    <i class="bi bi-star-fill text-warning"></i>
+                    <i class="bi bi-star-fill text-warning"></i>
+                    <i class="bi bi-star-fill text-warning"></i>
+                    <i class="bi bi-star-fill text-dark"></i>
+                    
+                    <div>
+                      <div style="line-height: 40px;">
+                      <p class="card-text text-danger" style="font-weight: bold; display: inline; text-decoration: line-through;">${{item.original_price}}</p>
+                      <p class="card-text mx-3" style="font-weight: bold; display: inline;">${{item.selling_price}}</p>
+                     </div>
+                      <p>{{item.total_sales}} sales</p>
+                    </div>
+                  </div>
+                  
+                  
+                  <div class="d-flex flex-column " >
+                   
+                   <button style="width: 130px; height: 50px; " class="border-0 bg-dark text-light">Add to Card <i class="bi bi-bag text-light"></i></button>
+                   <button style="width: 130px; height: 50px;" class="border-0 bg-warning text-light my-2">Buy <i class="bi bi-cart3 text-light"></i></button>
+                  
+                  </div>
+                  
+                
+                </div>
+                
+              </div>
+              
+            </div>
+            {% endfor %}
+           </div>
+        </div>
+    </div>
+</div>
+    <style>
+     img{
+       object-fit: cover;
+     }
+    </style>
+  
+    
+{% endblock body %}

@@ -1,0 +1,45 @@
+{% extends 'store/layouts/main.html' %}
+{% block title %}Home{% endblock title %}
+{% block body %}
+    
+    {% if messages %}
+    {% for message in messages %}
+    <div class=" aler alert alert-danger alert-dismissible fade show " role="alert">
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      <p class="{{ message.tags }}"><strong><i class="bi bi-exclamation-octagon-fill"></i></strong>{{ message }}</p>
+    </div>
+    {% endfor %}
+    {% endif %}
+    <div class="row" style="width: 100%;" >
+        <div class="col-1 ">
+          <div class="list-group" id="list-tab" role="tablist">
+            <a class="list-group-item list-group-item-action active" id="list-home-list" data-bs-toggle="list" href="#list-home" role="tab" aria-controls="list-home">Profile</a>
+            <a class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list" href="#list-profile" role="tab" aria-controls="list-profile">Oders</a>
+            <a class="list-group-item list-group-item-action" id="list-messages-list" data-bs-toggle="list" href="#list-messages" role="tab" aria-controls="list-messages">Updates</a>
+            <a class="list-group-item list-group-item-action" id="list-settings-list" data-bs-toggle="list" href="#list-settings" role="tab" aria-controls="list-settings">Settings</a>
+          </div>
+        </div>
+        <div class="col-11">
+          <div class="tab-content container my-5" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+              <div class="row" style="width: 100%;" >
+                <div class="col-2 bg-danger">
+                <img src="" alt="" style="height: 170px; ">
+                </div>
+                
+              </div>
+              
+            </div>
+            <div class="tab-pane fade container" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam doloremque quos praesentium ut soluta, dolorem voluptatibus eum, dolore qui necessitatibus aliquam debitis eius ratione sit adipisci voluptatem ullam assumenda quisquam!
+            </div>
+            <div class="tab-pane fade container" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. A cum voluptates numquam, odit vel fugiat, quod odio repellendus recusandae, consectetur nemo quos ex? Voluptas facilis enim hic dolorum magnam tempore.
+            </div>
+            <div class="tab-pane fade container" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, corporis nesciunt neque itaque id iste doloribus, nisi molestiae numquam totam aperiam voluptatem. Dolor nobis quisquam iste natus consequatur. Iure, eveniet.
+            </div>
+          </div>
+        </div>
+      </div>
+{% endblock body %}

@@ -1,0 +1,86 @@
+{% extends 'store/layouts/main.html' %}
+{% block title %}Home{% endblock title %}
+{% block body %}
+{% if messages %}
+{% for message in messages %}
+<div class=" aler alert alert-danger alert-dismissible fade show " role="alert">
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  <p class="{{ message.tags }}"><strong><i class="bi bi-exclamation-octagon-fill"></i></strong>{{ message }}</p>
+</div>
+{% endfor %}
+{% endif %}
+<div class="cont container d-flex justify-content-between my-3" >
+  <h5 class="container" style="font-weight: bold;">TECH PRODUCTS</h5>
+  <div class="d-flex ">
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <li class="page-item"><a class="page-link" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+  </div>
+</div>
+<hr style="width: 90vw;" class="container mb-3">
+<div class="cont container d-flex ">
+  
+ {% for item in category %}
+  <div class="col-md-3  ">
+ 
+    <div class=" py-5 " style="width: 265px; height: 265px; ">
+      <div class="p-0">
+        <a href="{% url 'collectionsview' item.slug %}">
+         <div class="category-imge " style="display: flex; justify-content: center;">
+          <img src="{{item.imge.url}}" alt=""  style="object-fit: fill; width: 60%;">
+         </div>
+         
+        </a>
+       
+      </div>
+      
+    </div>
+   <div class="bg-light p-2 m-1 ">
+    <div class="d-flex justify-content-between" >
+      <p>{{item.meta_keywords}}</p>
+      <i class="bi bi-bookmark-heart-fill "></i>
+    </div>
+     <h1 class="name">{{item.name}}</h1>
+   </div>
+  </div>
+  {% endfor %}
+
+</div>
+  
+   
+
+        
+
+       
+  
+
+  
+   <style>
+.cont{
+width: 90vw;
+
+overflow: hidden;
+
+}
+.name{
+  font-size: 20px;
+  font-weight: 600;
+}
+
+   </style>
+{% endblock body %}
