@@ -5,7 +5,7 @@
 <div class="container mt-3 ">
     <div class="row">
         <div class="col-md-12">
-          <div class="">
+          <div class="bg">
             <div class="dropdown mb-2">
               <button class="btn btn-dark shadow-none " type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                 Filter  <i class="bi bi-funnel"></i>
@@ -23,18 +23,18 @@
              
             </div>
           </div>  
-          <div class="row">
+          <div class="row ">
             {% for item in products %}
             <div class="  mx-4 my-4 " style="width: 18rem;">
-              <div class="d-flex justify-content-center p-3">
+              <div class="d-flex justify-content-center p-3 bg-light">
                 <a href="{% url 'productview' item.category.slug item.name %}">
 
                 <img src="{{item.product_imge.url}}"  alt="imge" width="150px">
                 
-              </a>
+                </a>
               </div>
               
-              <div class="bg-light">
+              <div class="">
                 <h5 class="card-title d-flex justify-content-between align-items-center">{{item.name}}</h5>
                 
                 <div class="d-flex justify-content-between">
@@ -46,19 +46,19 @@
                     <i class="bi bi-star-fill text-dark"></i>
                     
                     <div>
-                      <div style="line-height: 40px;">
+                      <div style="line-height: 30px; font-size: 13px;">
                       <p class="card-text text-danger" style="font-weight: bold; display: inline; text-decoration: line-through;">${{item.original_price}}</p>
-                      <p class="card-text mx-3" style="font-weight: bold; display: inline;">${{item.selling_price}}</p>
+                      <p class="card-text mx-1" style="font-weight: bold; display: inline;">${{item.selling_price}}</p>
                      </div>
-                      <p>{{item.total_sales}} sales</p>
+                      <p>{{item.total_sales}} </p>
                     </div>
                   </div>
                   
                   
-                  <div class="d-flex flex-column " >
+                  <div class="d-flex flex-column" >
+                    
+                   <button style="width: 120px; height: 35px; " class="border-0 bg-dark text-light ">Add to Card <i class="bi bi-bag text-light"></i></button>
                    
-                   <button style="width: 130px; height: 50px; " class="border-0 bg-dark text-light">Add to Card <i class="bi bi-bag text-light"></i></button>
-                   <button style="width: 130px; height: 50px;" class="border-0 bg-warning text-light my-2">Buy <i class="bi bi-cart3 text-light"></i></button>
                   
                   </div>
                   

@@ -16,7 +16,7 @@ def blog(request):
     return render(request, "store/blog/post.html",)
 def home(request):
     
-    return render(request, "store/index.html")
+    return render(request, "store/collections.html")
 
 def collections(request):
     category=Category.objects.filter(status=0)
@@ -103,12 +103,7 @@ def userlogin(request):
      if user is not None:
       login(request, user)
       request.session['username']=user.username
-      
-      
-      return redirect('/collections' )
-      
-      
-        
+      return redirect('/collections' )   
      else:
        messages.error(request, "Seems Like password or username incorrect")
        return redirect("/userlogin")
