@@ -21,13 +21,12 @@ def home(request):
 def collections(request):
     category=Category.objects.filter(status=0)
     context={"category":category}
-    print(request.session.get('username'))
     return render(request, 'store/collections.html', context )
 
 def collectionsview(request, slug):
   if request.method=='POST':
     prod_id=request.POST.get('proid')
-    pass
+    
   else:
     if(Category.objects.filter(slug=slug, status=0)):
       products=Product.objects.filter(category__slug=slug)
@@ -106,7 +105,6 @@ def userlogin(request):
      user=authenticate(username=username,password=password)
      if user is not None:
       login(request, user)
-      request.session['username']=user.username
       return redirect('/collections' )   
      else:
        messages.error(request, "Seems Like password or username incorrect")
