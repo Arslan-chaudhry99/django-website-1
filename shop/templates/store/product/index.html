@@ -51,14 +51,18 @@
                       <p class="card-text mx-1" style="font-weight: bold; display: inline;">${{item.selling_price}}</p>
                      </div>
                       <p>{{item.total_sales}} </p>
+                    
                     </div>
                   </div>
                   
                   
                   <div class="d-flex flex-column" >
                     
-                   <button style="width: 120px; height: 35px; " class="border-0 bg-dark text-light ">Add to Card <i class="bi bi-bag text-light"></i></button>
-                   
+                  <form action="collectionsview" method="post">
+                    {% csrf_token %}
+                    <input hidden type="text" value="{{item.id}}" name="proid">
+                    <button style="width: 120px; height: 35px; " class="border-0 bg-dark text-light " type="submit">Add to Card <i class="bi bi-bag text-light"></i></button>
+                  </form>
                   
                   </div>
                   

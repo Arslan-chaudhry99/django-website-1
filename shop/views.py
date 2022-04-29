@@ -25,12 +25,16 @@ def collections(request):
     return render(request, 'store/collections.html', context )
 
 def collectionsview(request, slug):
+  if request.method=='POST':
+    prod_id=request.POST.get('proid')
+    pass
+  else:
     if(Category.objects.filter(slug=slug, status=0)):
       products=Product.objects.filter(category__slug=slug)
       category_name=Category.objects.filter(slug=slug).first()
       contex={"products":products,"category_name":category_name}
-      print(products)
       return render(request, "store/product/index.html", contex)
+     
     else:
      return HttpResponse('This is not a valid product')
     
