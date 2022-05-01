@@ -26,7 +26,16 @@ def collections(request):
 def collectionsview(request, slug):
   if request.method=='POST':
     prod_id=request.POST.get('proid')
-    
+    cart=request.session.get('cart')
+    if cart:
+      cart[prod_id]=1
+      
+    else:
+      cart={}
+      cart[prod_id]=1
+      request.session["cart"]=cart
+    print(cart)
+    return redirect('/')
   else:
     if(Category.objects.filter(slug=slug, status=0)):
       products=Product.objects.filter(category__slug=slug)
