@@ -1,6 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar</a>
+      {% load static %}
+      <a class="navbar-brand" href="#"><img src="{% static 'logo/Yellow_Bag_Online_Shop_Logo__1_-removebg-preview.png' %}" alt="" style="width: 30px;"></a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" style="box-shadow: none;">
         <span class="navbar-toggler-icon btn-sm"></span>
       </button>
@@ -16,15 +17,20 @@
           {% if request.user.is_authenticated %}
           <li class="nav-item dropdown ">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"  role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              {% comment %} <i class="bi bi-person-circle"></i> {% endcomment %}
-              <img src="static/store/Untitled_design_5.png' %" alt="" width="35px" height="35px" style="border-radius: 50%; object-fit: fill;"> 
+             
+              <img src="{% static 'logo/arslan.jpeg' %}" alt="" width="35px" height="35px" style="border-radius: 50%; object-fit: cover; object-position: center;"> 
+
             </a>
             
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li ><a class="dropdown-item" href="profile_view">Profile</a></li>
+              <li ><a class="dropdown-item" href="{% url 'profile_view' %}">Profile</a></li>
               <li><hr class="dropdown-divider"></li>
+             
               
               
+              <li ><a class="dropdown-item " href="{% url 'reset_pass' %}" style="font-weight: ;">Change Password</a></li>
+              <li><hr class="dropdown-divider"></li>
+              {% comment %} -------0000------- {% endcomment %}
               <li ><a class="dropdown-item text-danger " href="{% url 'us_logout' %}" style="font-weight: bold;">Logout <i class="bi bi-box-arrow-right text-danger"></i></a></li>
              
             </ul>
@@ -38,12 +44,11 @@
           </li>
           {% else %}
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'signup' %}">Sign Up</a>
+            <a class="nav-link active" aria-current="page" href="{% url 'userlogin' %}">Login</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{% url 'userlogin' %}">Sign in</a>
+            <a class="nav-link active" aria-current="page" href="{% url 'signup' %}">Sign Up</a>
           </li>
-         
           {% endif %}
          
          

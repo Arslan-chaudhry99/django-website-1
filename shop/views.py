@@ -23,7 +23,7 @@ def collections(request):
     context={"category":category}
     return render(request, 'store/collections.html', context )
 
-def collectionsview(request, slug):
+def collections_view(request, slug):
   if request.method=='POST':
     prod_id=request.POST.get('proid')
     cart=request.session.get('cart')
@@ -47,7 +47,7 @@ def collectionsview(request, slug):
      return HttpResponse('This is not a valid product')
     
 
-def productview(request, cate_slug, prod_slug):
+def product_view(request, cate_slug, prod_slug):
     if(Category.objects.filter(slug=cate_slug, status=0)):
         if(Product.objects.filter(slug=cate_slug, status=0)):
           products=Product.objects.filter(name=prod_slug, status=0).first()
@@ -103,7 +103,7 @@ def signup(request):
       
     return render(request, 'store/auth/signup.html')
 
-def userlogin(request):
+def user_login(request):
   if request.user.is_authenticated:
     messages.error(request, "You are already logedin")
     return redirect("/collections")
@@ -133,3 +133,11 @@ def profile_view(request):
    return render(request, "store/auth/profile.html")
   else:
     return HttpResponse("Error 404 page not found")
+
+def reset_pass(request):
+  if request.method=='POST':
+   cur_pass=User.objects.all()
+   password=request.POST.get('curpassword')
+   
+  
+  return render(request, "store/auth/resetpass.html")
