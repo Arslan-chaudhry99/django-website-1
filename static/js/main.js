@@ -6,7 +6,8 @@ var a=1
 let inc=document.getElementById('inc');
 inc.addEventListener('click', function inc(){
  a=a+1
- document.getElementById('qnt').value=a;
+ document.getElementById('qnt').value=a
+//  document.getElementById('qnt').value=a
 })
 let dec=document.getElementById('dec');
 dec.addEventListener('click', function inc(){
